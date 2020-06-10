@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.roll_button)
         rollButton.setOnClickListener{ rollDice() }
+
+        val countButton: Button = findViewById(R.id.countup_button)
+        countButton.setOnClickListener{ countUp() }
     }
 
     private fun rollDice() {
@@ -29,5 +32,20 @@ class MainActivity : AppCompatActivity() {
         val resultText: TextView = findViewById(R.id.result_text)
         val randomInt = (1..6).random()
         resultText.text = randomInt.toString()
+    }
+
+    fun countUp() {
+        val resultText: TextView = findViewById(R.id.result_text)
+
+        if (resultText.text == "Hello World!") {
+            resultText.text = "1"
+        } else {
+            var resultInt = resultText.text.toString().toInt()
+
+            if (resultInt < 6) {
+                resultInt++
+                resultText.text = resultInt.toString()
+            }
+        }
     }
 }
